@@ -6,7 +6,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'echo "test content" > thing.txt'
-                sh 'pwd'
+                sh 'ls -lah'
                 sh 'python3'
             }
         }
