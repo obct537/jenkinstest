@@ -15,7 +15,7 @@ pipeline {
                     sh 'touch images/b.txt'
                     def uploader = load "uploader.groovy"
 
-                    uploader.upload(PW)
+                    uploader.upload(PASSWORD)
                 }
             }
         }
