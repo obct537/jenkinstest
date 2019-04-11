@@ -6,6 +6,8 @@ def upload(pw) {
     command += json_stuff
     command += '"'
 
+    println command
+
     sh command
 
 }
