@@ -9,3 +9,5 @@ def upload(pw) {
     sh command
 
 }
+
+return this
