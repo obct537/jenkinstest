@@ -1,11 +1,9 @@
 import groovy.json.JsonOutput
 
-def upload(pw) {
+def upload(creds) {
+    def pw = creds.split(':')[1]
     def json_stuff = JsonOutput.toJson([productName: "Test Product Name 44", username: "samschwa", password: pw, images: ["thing.txt", "images/*.txt"]])
 
-    println pw + "test"
-    def thing = pw.replace('!', ',')
-    println thing
     def command = "python3 /imageuploader/coronaApiHandler.py --json '$json_stuff'"
 
     println command

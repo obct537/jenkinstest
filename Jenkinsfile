@@ -3,7 +3,7 @@ pipeline {
         docker { image 'corona_uploader' }
     }
     environment {
-        PW = credentials('sam_ldap')
+        PASSWORD = credentials('sam_ldap')
     }
     stages {
         stage('Test') {
