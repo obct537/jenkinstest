@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'coronasdf' }
+        docker { image 'corona_uploader' }
     }
     environment {
         PASSWORD = credentials('samschwa')
