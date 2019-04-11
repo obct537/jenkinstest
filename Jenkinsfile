@@ -3,7 +3,7 @@ pipeline {
         docker { image 'corona_uploader' }
     }
     environment {
-        PASSWORD = credentials('sam_ldap')
+        PW = credentials('sam_ldap')
     }
     stages {
         stage('Test') {
@@ -15,7 +15,7 @@ pipeline {
                     sh 'touch images/b.txt'
                     def uploader = load "uploader.groovy"
 
-                    uploader.upload(PASSWORD)
+                    uploader.upload(PW)
                 }
             }
         }
