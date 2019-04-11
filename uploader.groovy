@@ -5,6 +5,7 @@ def upload(pw) {
 
     println pw + "test"
     def thing = pw.replace('!', ',')
+    println thing
     def command = "python3 /imageuploader/coronaApiHandler.py --json '$json_stuff'"
 
     println command
