@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'corona' }
+        docker { image 'corona_uploader' }
     }
     environment {
         PASSWORD = credentials('sam_ldap')
