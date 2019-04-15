@@ -15,7 +15,7 @@ def upload(creds) {
 
     println command
 
-    sh command
+    //sh command
 
 }
 
