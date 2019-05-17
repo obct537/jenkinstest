@@ -1,19 +1,23 @@
 import groovy.json.JsonOutput
+import com.cloudbees.plugins.credentials.*
 
 def upload(creds) {
     def pw = creds.split(':')[1]
-    def json_stuff = JsonOutput.toJson([directory: pwd(), version: '111', productName: "Test Product Name 44", username: "samschwa", password: pw, images: ["thing.txt", "images/*.txt"]])
-
-    def testthing = [itemA: 'a', itemB: 'b']
     
-    if( testthing.containsKey('itemA') ) {
-        println 'a'
-    } else {
-        println 'b'
-    }
-    def command = "python3 /imageuploader/coronaApiHandler.py --json '$json_stuff'"
-
-    println command
+    StandardCredentials c = CredentialsMatchers.firstOrNull(
+        CredentialsProvider.listCredentials(
+            StandardCredentials.class,
+            job,
+            job instanceof Queue.Task
+                ? Tasks.getAuthenticationOf((Queue.Task)job))
+                : ACL.SYSTEM,
+            URIRequirementBuilder.fromUri(issueTrackerUrl)
+        ),
+        CredentialsMatchers.allOf(
+            CredentialsMatchers.withId(credentialsId),
+            AuthenticationTokens.matcher(IssueTrackerAuthentication.class)
+        )
+    );
 
     //sh command
 
